@@ -1,0 +1,60 @@
+$background: #fff7f7d9;
+$lfs-blue: #006ac6;
+$lgt-blue: #eaf1f9e3;
+$lfs-yellow: #fab700;
+$lfs-grey: #75787b;
+$border-white: #F1F1F1;
+$border-grey: #cacaca;
+$lfs-red: #f61717;
+$hover-red: #d01313;
+$lfs-green: #11cb11;
+$back-modal: rgb(0 0 0 / 42%);
+
+body {
+  background-color: $background;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.page_content {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 60px;
+}
+
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+  .page {
+    overflow: hidden;
+    width: auto;
+  }
+
+  .page_content {
+    //overflow: scroll;
+    padding: 0 12px;
+    width: -webkit-fill-available;
+    margin-top: 20px;
+    align-items: center;
+  }
+}

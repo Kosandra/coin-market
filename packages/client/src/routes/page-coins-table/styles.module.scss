@@ -1,0 +1,30 @@
+@import "../../index.scss";
+
+.btn_scroll_down {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+
+  .page_content {
+    align-items: start;
+  }
+
+  .button_to_scroll {
+    top: auto;
+    right: 20px;
+    bottom: 20px;
+    flex-direction: row;
+  }
+
+  .btn_scroll_top {
+    justify-content: start;
+  }
+
+  .btn_scroll_down {
+    justify-content: start;
+  }
+}

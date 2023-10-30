@@ -1,0 +1,154 @@
+@import "../../index.scss";
+@import "../page-coins-table/styles.module";
+
+.coin_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 40px;
+
+  .coin_visual {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    .coin_name {
+      font-size: 32px;
+    }
+
+    img {
+      border-radius: 100%;
+    }
+  }
+
+  .coin_symbol {
+    font-size: 24px;
+  }
+}
+
+.button_to_main {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 5;
+}
+
+.coin_body {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 44px;
+  gap: 80px;
+  flex-wrap: wrap;
+}
+
+.coin_info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 32px;
+
+  .coin_param {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    font-size: 22px;
+    margin: 0;
+
+    .param_name {
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    span {
+      font-style: italic;
+    }
+  }
+}
+
+.time_period_group {
+  display: flex;
+  flex-direction: column;
+
+  .param_name {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  .radio_btns {
+    display: flex;
+    flex-direction: row;
+
+    label {
+      margin-right: 20px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+    }
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 95%;
+  margin-top: 5px;
+}
+
+#axisBtn {
+  text-transform: capitalize;
+}
+
+#myGrid {
+  flex: 1;
+}
+
+.myChart {
+  flex: 1;
+  margin-top: 0.5rem;
+  border: 1px solid var(--ag-border-color);
+
+  .ag-chart-menu {
+    display: none !important;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+  .coin_body {
+    width: auto;
+    flex-direction: column;
+    margin-bottom: 60px;
+  }
+
+  .coin_info {
+    width: 100%;
+  }
+
+  .coin_header {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .button_to_main {
+    bottom: 20px;
+    top: auto;
+    left: auto;
+    right: 20px;
+    z-index: 10;
+  }
+
+  .myChart {
+    min-width: 300px;
+    max-width: 700px;
+    width: 90vw;
+  }
+}

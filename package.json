@@ -1,0 +1,25 @@
+{
+  "name": "coin-market-trpc",
+  "version": "1.0.0",
+  "dependencies": {
+    "eslint": "^8.52.0"
+  },
+  "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "start-server": "cd packages/server && npm start",
+    "start-client": "cd packages/client && npm start",
+    "start-all": "npm run start-client && npm run start-server"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.9.0",
+    "@typescript-eslint/parser": "^6.9.0",
+    "prettier": "3.0.3"
+  }
+}

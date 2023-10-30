@@ -1,0 +1,12 @@
+@import "../../index";
+
+.not_found {
+  color: $lfs-grey;
+  font-size: 26px;
+  font-weight: bold;
+
+  span {
+    font-style: italic;
+    color: black;
+  }
+}
