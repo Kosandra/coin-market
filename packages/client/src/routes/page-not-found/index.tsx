@@ -1,7 +1,7 @@
 import React from 'react';
 import {useLocation} from 'react-router-dom';
 import styles from './styles.module.scss';
-import FixButton from '../../components/FixButton';
+import FixButton from '../../components/fixButton/FixButton';
 
 const PageNotFound = () => {
     const navigator = useLocation();

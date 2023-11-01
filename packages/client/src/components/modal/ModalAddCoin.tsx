@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ButtonItem from '../ButtonItem';
+import ButtonItem from '../buttonItem/ButtonItem';
 import ModalWindow from './ModalWindow';
 import styles from './styles.module.scss';
 import { ICoin } from 'models/ICoin';

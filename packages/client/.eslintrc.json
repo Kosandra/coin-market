@@ -7,7 +7,8 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
-    "prettier"
+    "prettier",
+    "plugin:storybook/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -32,7 +33,9 @@
     "react/destructuring-assignment": "off",
     "react/require-default-props": "off",
     "react/jsx-props-no-spreading": "off",
-    "react/jsx-filename-extension": [0],
+    "react/jsx-filename-extension": [
+      0
+    ],
     "react/no-unstable-nested-components": "off",
     "react/function-component-definition": [
       0,
@@ -43,11 +46,21 @@
     "no-trailing-spaces": "warn",
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "warn",
-    "semi": ["error", "always"],
-    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "no-plusplus": [
+      "error",
+      {
+        "allowForLoopAfterthoughts": true
+      }
+    ],
     "react-hooks/exhaustive-deps": "off",
     "no-shadow": "off",
-    "@typescript-eslint/no-shadow": ["error"],
+    "@typescript-eslint/no-shadow": [
+      "error"
+    ],
     "camelcase": "off",
     "@typescript-eslint/camelcase": "off"
   }
