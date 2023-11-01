@@ -2,8 +2,8 @@ import React, {ChangeEvent, useEffect, useState} from 'react';
 import styles from './styles.module.scss';
 import InputSearch from '../../components/InputSearch';
 import Layout from '../../components/layout/Layout';
-import FixButton from '../../components/FixButton';
-import FixButtonBottomRight from '../../components/FixButtonBottomRight';
+import FixButton from '../../components/fixButton/FixButton';
+import FixButtonBottomRight from '../../components/fixButton/FixButtonBottomRight';
 import TableCoins from '../../components/table-coins';
 import {useAppDispatch} from '../../redux/hooks';
 import {setAllCoins, setCoinsForTable} from '../../redux/slice/coins';
@@ -13,7 +13,7 @@ import {ICoin} from 'models/ICoin';
 
 const PageCoinsTable = () => {
     const offsetQuery = 0;
-    const [limitQuery, setLimitQuery] = useState(20);
+    const [limitQuery, setLimitQuery] = useState<number>(20);
     const dispatch = useAppDispatch();
     const [isLoading, setIsLoading] = useState(false);
 

@@ -1,15 +1,9 @@
 import React  from 'react';
-import styles from './styles.module.scss';
+import styles from '../styles.module.scss';
 import { Link } from 'react-router-dom';
+import {FixButtonArgs} from "components/FixButtonTypes";
 
-type Props = {
-	text: string,
-	toPage?: string,
-	onClick?: () => void,
-}
-
-
-const FixButton = (props: Props) => {
+const FixButton = (props: FixButtonArgs) => {
 	const { toPage, text, onClick } = props;
 
 	return (

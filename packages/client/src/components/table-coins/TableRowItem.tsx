@@ -4,7 +4,7 @@ import { ICoin } from 'models/ICoin';
 import { IColumnTable } from 'models/ITableColumn';
 import CoinIcon from '../CoinIcon';
 import { fixNumber, percentElement } from '../../assets/utils/functions';
-import ButtonItem from '../ButtonItem';
+import ButtonItem from '../buttonItem/ButtonItem';
 import { useNavigate } from 'react-router-dom';
 import ModalAddCoin from '../modal/ModalAddCoin';
 

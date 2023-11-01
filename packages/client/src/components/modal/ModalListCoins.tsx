@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ModalWindow from './ModalWindow';
 import styles from './styles.module.scss';
-import ButtonItem from '../ButtonItem';
+import ButtonItem from '../buttonItem/ButtonItem';
 import CoinIcon from '../CoinIcon';
 import { ICoinLocalStorage } from 'models/ICoinLocalStorage';
 import { deleteCountCoinById } from '../../redux/slice/profile';

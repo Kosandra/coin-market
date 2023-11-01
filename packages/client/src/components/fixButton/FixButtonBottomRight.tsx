@@ -1,14 +1,9 @@
 import React from 'react';
 import FixButton from './FixButton';
-import styles from './styles.module.scss';
+import styles from '../styles.module.scss';
+import {FixButtonArgs} from "components/FixButtonTypes";
 
-type Props = {
-	text: string,
-	toPage?: string,
-	onClick?: () => void,
-}
-
-const FixButtonBottomRight = (props: Props) => {
+const FixButtonBottomRight = (props: FixButtonArgs) => {
 	const { toPage, text, onClick } = props;
 
 	return (

@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { COINCAP_API } from '../../../assets/utils/links';
+import {COINCAP_API, SERVER_API} from '../../../assets/utils/links';
 import { ICoin } from 'models/ICoin';
 import { IHistoryDataItem } from 'models/IHistoryDataItem';
 
@@ -34,7 +34,7 @@ export const coinsApi = createApi({
 	endpoints: build => ({
 		getCoins: build.query({
 			query: (props: PropsGetCoins) => ({
-				url: '/v2/assets',
+				url: SERVER_API,
 				params: props,
 			}),
 			transformResponse: (data: DataAllCoins) => data?.data,

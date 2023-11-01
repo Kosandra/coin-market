@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './styles.module.scss';
-import ButtonItem from '../ButtonItem';
+import ButtonItem from '../buttonItem/ButtonItem';
 
 type Props = {
 	title: string,
@@ -18,7 +18,7 @@ const MoreCoinsRow = (props: Props) => {
 			<ButtonItem
 				text={title}
 				onClick={onClick}
-				classNames={['button_load']}
+				variant={'stretch'}
 			/>
 		</div>
 	);

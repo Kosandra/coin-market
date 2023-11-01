@@ -4,7 +4,7 @@ import {ICoin} from 'models/ICoin';
 import styles from './styles.module.scss';
 import {fixNumber} from '../../assets/utils/functions';
 import ChartStatistic from './ChartStatistic';
-import ButtonItem from '../../components/ButtonItem';
+import ButtonItem from '../../components/buttonItem/ButtonItem';
 import PageNotFound from '../page-not-found';
 import Layout from '../../components/layout/Layout';
 import ModalAddCoin from '../../components/modal/ModalAddCoin';
@@ -14,7 +14,7 @@ import {
     coinInfoParams,
     modeChartStatisticCoin,
 } from '../../assets/utils/constants';
-import FixButtonBottomRight from '../../components/FixButtonBottomRight';
+import FixButtonBottomRight from '../../components/fixButton/FixButtonBottomRight';
 import {IHistoryDataItem} from 'models/IHistoryDataItem';
 import {useAppDispatch, useAppSelector} from '../../redux/hooks';
 import {setCurrentCoin, setCurrentCoinHistory} from '../../redux/slice/coins';
