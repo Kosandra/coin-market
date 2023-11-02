@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import styles from './styles.module.scss';
 import { ICoin } from 'models/ICoin';
 import { IColumnTable } from 'models/ITableColumn';
-import CoinIcon from '../CoinIcon';
+import CoinIcon from '../coin-icon/CoinIcon';
 import { fixNumber, percentElement } from '../../assets/utils/functions';
-import ButtonItem from '../buttonItem/ButtonItem';
+import ButtonItem from '../button-item/ButtonItem';
 import { useNavigate } from 'react-router-dom';
 import ModalAddCoin from '../modal/ModalAddCoin';
 
 type Props = {
-	column: IColumnTable,
-	coin: ICoin
-}
+	column: IColumnTable;
+	coin: ICoin;
+};
 
 const TableRowItem = (props: Props) => {
 	const { column, coin } = props;
@@ -35,15 +35,11 @@ const TableRowItem = (props: Props) => {
 			case 'rank':
 				return coin[param];
 			case 'id':
-				return (<div className={styles.flex_ceil}>
-					<CoinIcon
-						coin={coin}
-						size={24}
-					/>
-					<span className={styles.coin_symbol}>
-						{coin.symbol}
-					</span>
-				</div>);
+				return (
+					<div className={styles.flex_ceil}>
+						<CoinIcon coin={coin} size={24} variant={'symbol'} fontSize={18} />
+					</div>
+				);
 			case 'priceUsd':
 			case 'marketCapUsd':
 				return `$${fixNumber(coin[param], true).toLocaleString()}`;
@@ -59,15 +55,18 @@ const TableRowItem = (props: Props) => {
 			<div
 				className={styles.column_item}
 				style={{ flexBasis: `${column.width}%` }}
-				onClick={column.value !== 'addToProfile'
-					? () => toPageCoin(coin)
-					: () => {
-					}}
+				onClick={
+					column.value !== 'addToProfile' ? () => toPageCoin(coin) : () => {}
+				}
 			>
 				{renderSwitch(column.value)}
 			</div>
 			{isModalActive && (
-				<ModalAddCoin title={'Add coin window'} onClose={handleModalClose} coin={coin} />
+				<ModalAddCoin
+					title={'Add coin window'}
+					onClose={handleModalClose}
+					coin={coin}
+				/>
 			)}
 		</>
 	);

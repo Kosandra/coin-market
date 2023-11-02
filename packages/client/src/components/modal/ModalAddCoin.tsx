@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ButtonItem from '../buttonItem/ButtonItem';
+import ButtonItem from '../button-item/ButtonItem';
 import ModalWindow from './ModalWindow';
 import styles from './styles.module.scss';
 import { ICoin } from 'models/ICoin';
@@ -12,7 +12,7 @@ type Props = {
 	title: string;
 	onClose: () => void;
 	children?: React.ReactNode | React.ReactNode[];
-	coin?: ICoin
+	coin?: ICoin;
 };
 
 const ModalAddCoin = (props: Props) => {
@@ -35,20 +35,19 @@ const ModalAddCoin = (props: Props) => {
 	};
 
 	const getTitle = () => {
-		return <div className={styles.title_add_window}>
-			{`${title} from coin `}
-			<span className={styles.title_coin}>{coin?.name}</span>
-		</div>;
+		return (
+			<div className={styles.title_add_window}>
+				{`${title} from coin `}
+				<span className={styles.title_coin}>{coin?.name}</span>
+			</div>
+		);
 	};
 
 	return (
 		<ModalWindow title={getTitle()} onClose={onClose}>
 			<form onSubmit={onSubmit} className={styles.form_add_coin}>
 				<div className={styles.form_group}>
-					<label
-						htmlFor='name'
-						className={styles.input_label}
-					>
+					<label htmlFor='name' className={styles.input_label}>
 						Count:
 					</label>
 					<input
@@ -58,7 +57,7 @@ const ModalAddCoin = (props: Props) => {
 						max={100}
 						className={styles.input_count}
 						defaultValue={countInputValue}
-						onChange={(event) => {
+						onChange={event => {
 							setCountInputValue(Number(event.target.value));
 						}}
 					/>

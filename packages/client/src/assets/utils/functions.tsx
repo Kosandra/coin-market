@@ -21,7 +21,9 @@ export const sortArrayString = (array: ICoin[]) => {
 };
 
 export const sortArrayNumber = (array: ICoin[], field: keyof ICoin) => {
-	return [...array].sort((a: ICoin, b: ICoin) => Number(b[field]) - Number(a[field]));
+	return [...array].sort(
+		(a: ICoin, b: ICoin) => Number(b[field]) - Number(a[field]),
+	);
 };
 
 export const fixNumber = (numberStr: number, noZero: boolean) => {
@@ -34,7 +36,7 @@ export const fixNumber = (numberStr: number, noZero: boolean) => {
 };
 
 export const calculatePercent = (digitFrom: number, digitValue: number) => {
-	const percent = digitValue / digitFrom * 100;
+	const percent = (digitValue / digitFrom) * 100;
 	return Math.abs(fixNumber(percent || 0, false));
 };
 
@@ -48,7 +50,9 @@ export const percentElement = (percentStr: number) => {
 };
 
 export const getImagePath = (symbol: string) => {
-	return `${IMAGES_API}/${coinsimages[symbol as keyof typeof coinsimages] || 1}.png`;
+	return `${IMAGES_API}/${
+		coinsimages[symbol as keyof typeof coinsimages] || 1
+	}.png`;
 };
 
 export const checkForDevice = () => window.innerWidth < 768;

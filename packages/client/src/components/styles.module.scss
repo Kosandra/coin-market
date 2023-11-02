@@ -43,6 +43,10 @@
   font-size: 18px;
 }
 
+.fix_button_container{
+  display: flex;
+}
+
 .fix_button {
   text-decoration: none;
   background: $lfs-blue;
@@ -78,9 +82,17 @@
 .coin_view {
   display: flex;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
+  gap: 8px;
+}
+
+.coin_infotext{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
   gap: 12px;
+  font-size: 16px;
 }
 
 .coin_name {
@@ -88,6 +100,17 @@
   text-transform: capitalize;
   font-weight: bold;
   text-wrap: wrap;
+}
+
+.coin_symbol {
+  color: $lfs-grey;
+  font-weight: bold;
+}
+
+.coin_price{
+  font-style: italic;
+  font-weight: 500;
+  color: $lfs-grey;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 768px) {
