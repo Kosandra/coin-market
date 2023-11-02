@@ -1,15 +1,9 @@
-import React, { CSSProperties, useEffect, useState } from 'react';
-import styles from './styles.module.scss';
+import React, { useEffect, useState } from 'react';
+import styles from '../styles.module.scss';
+import { TextWriperTypes } from 'components/TextWriperTypes';
 
-type Props = {
-	text: string,
-	delay: number,
-	className?: string,
-	style?: CSSProperties,
-}
-
-const TextWriper = (props: Props) => {
-	const { text, delay, className, style } = props;
+const TextWriper = (props: TextWriperTypes) => {
+	const { text, delayValue, style } = props;
 
 	const [currentText, setCurrentText] = useState('');
 	const [currentIndex, setCurrentIndex] = useState(0);
@@ -19,17 +13,14 @@ const TextWriper = (props: Props) => {
 			const timeout = setTimeout(() => {
 				setCurrentText(prevText => prevText + text[currentIndex]);
 				setCurrentIndex(prevIndex => prevIndex + 1);
-			}, delay);
+			}, delayValue);
 
 			return () => clearTimeout(timeout);
 		}
-	}, [currentIndex, delay, text]);
+	}, [currentIndex, delayValue, text]);
 
 	return (
-		<div
-			className={`${styles.text_wriper} ${styles[className!]}`}
-			style={style}
-		>
+		<div className={`${styles.text_wriper}`} style={style}>
 			{currentText}
 		</div>
 	);
