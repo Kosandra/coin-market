@@ -3,7 +3,7 @@ import styles from '../styles.module.scss';
 import { FixButtonArgs } from 'components/FixButtonTypes';
 
 const FixButtonUnLink = (props: FixButtonArgs) => {
-	const { text, onClick, variant } = props;
+	const { text, onClick, variant, idButton } = props;
 	const getClassNames = () => {
 		let classes = `${styles.fix_button_container} `;
 		switch (variant) {
@@ -19,7 +19,7 @@ const FixButtonUnLink = (props: FixButtonArgs) => {
 	};
 
 	return (
-		<div className={getClassNames()}>
+		<div className={getClassNames()} id={idButton}>
 			<div className={styles.fix_button} onClick={onClick}>
 				{text}
 			</div>

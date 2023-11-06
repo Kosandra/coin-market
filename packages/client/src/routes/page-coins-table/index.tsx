@@ -75,7 +75,7 @@ const PageCoinsTable = () => {
 	return (
 		<div className={styles.page}>
 			<Layout title={'Table page'}>
-				<div className={styles.page_content}>
+				<div className={styles.page_content} id={'page_content'}>
 					<SearchInput
 						placeholder={'Search by name'}
 						onChange={(event: ChangeEvent<HTMLInputElement>) => {
@@ -83,7 +83,11 @@ const PageCoinsTable = () => {
 						}}
 					/>
 					<div className={styles.btn_scroll_down}>
-						<FixButton text={'To down'} onClick={handleScrollDown} />
+						<FixButton
+							text={'To down'}
+							onClick={handleScrollDown}
+							idButton={'btn-to-down'}
+						/>
 					</div>
 					<TableCoins
 						handleMoreCoins={handleLoadMoreCoins}
@@ -94,6 +98,7 @@ const PageCoinsTable = () => {
 						text={'To top'}
 						onClick={handleScrollTop}
 						variant={'right_bottom'}
+						idButton={'btn-to-top'}
 					/>
 				</div>
 			</Layout>

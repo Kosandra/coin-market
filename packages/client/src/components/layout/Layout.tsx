@@ -3,15 +3,13 @@ import styles from './styles.module.scss';
 import Header from './Header';
 
 type Props = {
-	title: string,
+	title: string;
 	children: ReactElement;
-}
+};
 
 const Layout: React.FC<Props> = ({ title, children }) => {
-
-
 	return (
-		<div className={styles.layout}>
+		<div className={styles.layout} id={'layout'}>
 			<Header />
 			{children}
 		</div>
