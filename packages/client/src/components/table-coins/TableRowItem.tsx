@@ -37,7 +37,13 @@ const TableRowItem = (props: Props) => {
 			case 'id':
 				return (
 					<div className={styles.flex_ceil}>
-						<CoinIcon coin={coin} size={24} variant={'symbol'} fontSize={18} />
+						<CoinIcon
+							coin={coin}
+							size={24}
+							variant={'symbol'}
+							fontSize={18}
+							idElement={'row-icon-coin'}
+						/>
 					</div>
 				);
 			case 'priceUsd':
@@ -46,7 +52,13 @@ const TableRowItem = (props: Props) => {
 			case 'changePercent24Hr':
 				return percentElement(coin.changePercent24Hr);
 			default:
-				return <ButtonItem text={'Add'} onClick={handleModalOpen} />;
+				return (
+					<ButtonItem
+						text={'Add'}
+						onClick={handleModalOpen}
+						idButton={'btn_row_add'}
+					/>
+				);
 		}
 	};
 

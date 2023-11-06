@@ -12,7 +12,12 @@ const MoreCoinsRow = (props: Props) => {
 
 	return (
 		<div className={styles.row_more_coins}>
-			<ButtonItem text={title} onClick={onClick} variant={'stretch'} />
+			<ButtonItem
+				text={title}
+				onClick={onClick}
+				variant={'stretch'}
+				idButton={'btn-more-coins'}
+			/>
 		</div>
 	);
 };

@@ -7,6 +7,9 @@ const meta: Meta<typeof ButtonItem> = {
 	component: ButtonItem,
 	tags: ['autodocs'],
 	argTypes: {
+		idButton: {
+			description: 'Identifier of the component to be tested',
+		},
 		type: {
 			control: { type: 'select' },
 			description: 'Button type',

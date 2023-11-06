@@ -5,22 +5,17 @@ import { columnsTableCoins } from '../../assets/utils/constants';
 import TableRowItem from './TableRowItem';
 
 type Props = {
-	coin: ICoin,
-}
-
+	coin: ICoin;
+};
 
 const TableCoinRow = (props: Props) => {
 	const { coin } = props;
 
 	return (
-		<div className={styles.coin_row}>
-			{columnsTableCoins.map(column =>
-				<TableRowItem
-					coin={coin}
-					column={column}
-					key={column.value}
-				/>,
-			)}
+		<div className={styles.coin_row} id={coin.id}>
+			{columnsTableCoins.map(column => (
+				<TableRowItem coin={coin} column={column} key={column.value} />
+			))}
 		</div>
 	);
 };

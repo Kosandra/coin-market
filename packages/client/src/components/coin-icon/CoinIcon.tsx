@@ -5,7 +5,7 @@ import { CoinIconTypes } from 'components/CoinIconTypes';
 import { ICoinLocalStorage } from 'models/ICoinLocalStorage';
 
 const CoinIcon = (props: CoinIconTypes) => {
-	const { size, coin, fontSize, variant } = props;
+	const { size, coin, fontSize, variant, idElement } = props;
 
 	const variantElements = () => {
 		switch (variant) {
@@ -33,7 +33,11 @@ const CoinIcon = (props: CoinIconTypes) => {
 	};
 
 	return (
-		<div className={styles.coin_view} style={{ gap: fontSize / 2 }}>
+		<div
+			className={styles.coin_view}
+			style={{ gap: fontSize / 2 }}
+			id={idElement}
+		>
 			<img
 				src={getImagePath(coin.symbol)}
 				width={`${size}px`}

@@ -7,19 +7,35 @@
   "main": "index.js",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "cypress/*"
   ],
   "scripts": {
     "start-server": "cd packages/server && npm start",
     "start-client": "cd packages/client && npm start",
-    "start-all": "npm run start-client && npm run start-server"
+    "start-all": "npm run start-client && npm run start-server",
+    "test:cypress": "start-server-and-test start-server http://localhost:3030 start-client http://localhost:3000 cypress",
+    "cypress": "cypress open"
   },
   "publishConfig": {
     "access": "public"
   },
   "devDependencies": {
+    "@types/jest": "^29.5.7",
     "@typescript-eslint/eslint-plugin": "^6.9.0",
     "@typescript-eslint/parser": "^6.9.0",
-    "prettier": "3.0.3"
+    "cypress": "^13.4.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-cypress": "^2.15.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "3.0.3",
+    "start-server-and-test": "^2.0.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   }
 }

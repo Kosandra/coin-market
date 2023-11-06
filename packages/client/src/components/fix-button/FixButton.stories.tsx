@@ -7,6 +7,9 @@ const meta: Meta<typeof FixButtonUnLink> = {
 	component: FixButtonUnLink,
 	tags: ['autodocs'],
 	argTypes: {
+		idButton: {
+			description: 'Identifier of the component to be tested',
+		},
 		text: {
 			description: 'Button text',
 		},

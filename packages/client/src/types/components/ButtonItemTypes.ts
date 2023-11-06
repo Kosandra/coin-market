@@ -1,8 +1,9 @@
-import {MouseEventHandler} from "react";
+import { MouseEventHandler } from 'react';
 
 export type ButtonItemsArgs = {
-    text?: string;
-    onClick?: MouseEventHandler;
-    type?: 'submit' | 'button',
-    variant?: 'primary' | 'stretch'
+	idButton?: string;
+	text?: string;
+	onClick?: MouseEventHandler;
+	type?: 'submit' | 'button';
+	variant?: 'primary' | 'stretch';
 };

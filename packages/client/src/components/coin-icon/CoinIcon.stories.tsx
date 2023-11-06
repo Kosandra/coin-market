@@ -8,6 +8,9 @@ const meta: Meta<typeof CoinIcon> = {
 	component: CoinIcon,
 	tags: ['autodocs'],
 	argTypes: {
+		idElement: {
+			description: 'Identifier of the component to be tested',
+		},
 		coin: {
 			description: 'Object with information about the coin',
 		},

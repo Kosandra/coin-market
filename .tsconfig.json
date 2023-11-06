@@ -4,8 +4,15 @@
     "target": "ES6",
     "esModuleInterop": true,
     "strict": false,
-    "outDir": "dist"
+    "outDir": "dist",
+    "types": [
+      "jest"
+    ]
   },
-  "include": ["packages"]
+  "include": [
+    "cypress",
+    "packages",
+    "**/*.cy.ts"
+  ]
 }
 

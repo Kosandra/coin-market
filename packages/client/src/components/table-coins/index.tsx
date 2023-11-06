@@ -58,7 +58,7 @@ const Index = (props: Props) => {
 					))}
 				</div>
 
-				<div className={styles.table_content}>
+				<div className={styles.table_content} id={'table-coins'}>
 					{isLoading ? (
 						<div className={styles.row_empty}>
 							<TextWriper text={'Loading redux...'} delayValue={300} />
