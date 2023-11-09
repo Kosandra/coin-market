@@ -32,7 +32,7 @@ const ModalListCoins = (props: Props) => {
 	};
 
 	return (
-		<ModalWindow title={title} onClose={onClose}>
+		<ModalWindow title={title} onClose={onClose} id={'modal-list-coins'}>
 			<div className={styles.modal_list_content}>
 				<ul>
 					{coinsPersist.length > 0 ? (
@@ -48,7 +48,7 @@ const ModalListCoins = (props: Props) => {
 									>
 										<div className={styles.input_label}>
 											<CoinIcon coin={coin} size={24} variant={'priced'} />
-											{`(${coin?.count})`}
+											<span>({coin?.count})</span>
 										</div>
 										<div className={styles.item_list_right}>
 											<input
@@ -63,6 +63,11 @@ const ModalListCoins = (props: Props) => {
 														count: Number(event.target.value),
 														idCount: coin.id,
 													});
+												}}
+												onFocus={event => {
+													if (event.target.value == '0') {
+														event.target.value = '';
+													}
 												}}
 											/>
 											<ButtonItem type={'submit'} text={'Delete'} />

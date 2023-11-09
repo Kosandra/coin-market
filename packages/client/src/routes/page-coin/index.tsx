@@ -29,26 +29,41 @@ const PageCoin = () => {
 		modeChartStatisticCoin[0],
 	);
 	const [isLoading, setIsLoading] = useState(false);
+	const [isLoadingHistory, setIsLoadingHistory] = useState(false);
 	const currentCoin = useAppSelector(state => state.coinsAll.currentCoin);
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
 		setIsLoading(true);
-		getDataCoin().then(() => setIsLoading(false));
+		getCoinData().then(() =>
+			getCoinHistory().then(() => {
+				setIsLoading(false);
+				setIsLoadingHistory(false);
+			}),
+		);
+	}, []);
+
+	useEffect(() => {
+		setIsLoadingHistory(true);
+		getCoinHistory().then(() => setIsLoadingHistory(false));
 	}, [topping]);
 
-	const getDataCoin = async () => {
+	const getCoinData = async () => {
 		if (!coinId) return;
 		const coinServer: ICoin = (await client.getCoinByIdApi.query({
 			coinId: coinId,
 		})) as ICoin;
+		dispatch(setCurrentCoin(coinServer));
+	};
+
+	const getCoinHistory = async () => {
+		if (!coinId) return;
 		const historyServer: IHistoryDataItem[] =
 			await client.getCoinHistoryApi.query({
 				coinId: coinId,
 				interval: topping.interval,
 			});
 		dispatch(setCurrentCoinHistory(historyServer));
-		dispatch(setCurrentCoin(coinServer));
 	};
 
 	const handleModalOpen = () => {
@@ -72,12 +87,17 @@ const PageCoin = () => {
 			{currentCoin ? (
 				<Layout title={'Coin page'}>
 					<>
-						<FixButton text={'Back'} toPage={'/'} variant={'right_bottom'} />
+						<FixButton
+							text={'Back'}
+							toPage={'/'}
+							variant={'right_bottom'}
+							idButton={'btn_back'}
+						/>
 						{isLoading ? (
 							<TextWriper text={'loading...'} delayValue={30} />
 						) : (
 							<div className={styles.page_content}>
-								<div className={styles.coin_header}>
+								<div className={styles.coin_header} id={'coin-header'}>
 									<div className={styles.coin_visual}>
 										<CoinIcon
 											coin={currentCoin!}
@@ -98,7 +118,7 @@ const PageCoin = () => {
 										/>
 									)}
 								</div>
-								<div className={styles.coin_body}>
+								<div className={styles.coin_body} id={'coin-body'}>
 									<div className={styles.coin_info}>
 										{coinInfoParams.map((coinParam, key) => (
 											<p className={styles.coin_param} key={key}>
@@ -115,14 +135,18 @@ const PageCoin = () => {
 											</p>
 										))}
 									</div>
-									<div>
-										{currentCoin?.id && (
-											<ChartStatistic
-												topping={topping}
-												onChangeMode={onOptionChangeTopping}
-											/>
-										)}
-									</div>
+									{false ? (
+										<TextWriper text={'loading chart...'} delayValue={30} />
+									) : (
+										<div>
+											{currentCoin?.id && (
+												<ChartStatistic
+													topping={topping}
+													onChangeMode={onOptionChangeTopping}
+												/>
+											)}
+										</div>
+									)}
 								</div>
 							</div>
 						)}

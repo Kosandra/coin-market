@@ -1,13 +1,13 @@
-import React  from 'react';
+import React from 'react';
 import { coins_icon } from '../../assets/images';
 import styles from './styles.module.scss';
 
 type Props = {
-	profileSumBuy: number,
-	differenceSum: number,
-	differencePercent: number,
-	onClick?: () => void,
-}
+	profileSumBuy: number;
+	differenceSum: number;
+	differencePercent: number;
+	onClick?: () => void;
+};
 
 const ProfileMoney = (props: Props) => {
 	const { profileSumBuy, differenceSum, differencePercent, onClick } = props;
@@ -16,16 +16,15 @@ const ProfileMoney = (props: Props) => {
 		if (number < 0)
 			return <span className={styles.negative}>{number.toLocaleString()}</span>;
 		if (number > 0)
-			return <span className={styles.positive}>+{number.toLocaleString()}</span>;
+			return (
+				<span className={styles.positive}>+{number.toLocaleString()}</span>
+			);
 		return <span>{number.toLocaleString()}</span>;
 	};
 
 	return (
 		<>
-			<div
-				className={styles.cart}
-				onClick={onClick}
-			>
+			<div className={styles.cart} onClick={onClick} id={'profile-cart'}>
 				<div className={styles.sum}>
 					{`${profileSumBuy.toLocaleString()} USD `}
 					<div>

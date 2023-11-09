@@ -1,11 +1,11 @@
-import React, { ChangeEvent} from 'react';
+import React, { ChangeEvent } from 'react';
 import styles from './styles.module.scss';
 import { IColumnTable } from 'models/ITableColumn';
 
 type Props = {
-	column: IColumnTable,
-	sortColumn?: (e: ChangeEvent<HTMLInputElement>) => void
-}
+	column: IColumnTable;
+	sortColumn?: (e: ChangeEvent<HTMLInputElement>) => void;
+};
 
 const TableHeaderColumn = (props: Props) => {
 	const { column, sortColumn } = props;
@@ -16,7 +16,7 @@ const TableHeaderColumn = (props: Props) => {
 			style={{ flexBasis: `${column.width}%` }}
 		>
 			<input
-				type='checkbox'
+				type={column.sorted ? 'checkbox' : 'hidden'}
 				value={column.value}
 				id={column.value}
 				onChange={sortColumn}

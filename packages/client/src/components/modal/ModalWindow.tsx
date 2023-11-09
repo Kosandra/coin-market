@@ -1,16 +1,23 @@
-import React, { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+	ReactNode,
+	useCallback,
+	useEffect,
+	useRef,
+	useState,
+} from 'react';
 import type { MouseEventHandler } from 'react';
 
 import styles from './styles.module.scss';
 
 type Props = {
+	id?: string;
 	title: ReactNode | string;
 	onClose?: () => void;
 	children: React.ReactNode | React.ReactNode[];
 };
 
 const ModalWindow = (props: Props) => {
-	const { title, onClose, children } = props;
+	const { title, onClose, children, id } = props;
 
 	const rootRef = useRef<HTMLDivElement>(null);
 	const [isMounted, setMounted] = useState(false);
@@ -20,7 +27,6 @@ const ModalWindow = (props: Props) => {
 	}, []);
 
 	useEffect(() => {
-
 		const handleWrapperClick = (event: MouseEvent) => {
 			const { target } = event;
 
@@ -44,12 +50,13 @@ const ModalWindow = (props: Props) => {
 		};
 	}, [onClose]);
 
-	const handleClose: MouseEventHandler<HTMLDivElement | HTMLButtonElement> = useCallback(() => {
-		onClose?.();
-	}, [onClose]);
+	const handleClose: MouseEventHandler<HTMLDivElement | HTMLButtonElement> =
+		useCallback(() => {
+			onClose?.();
+		}, [onClose]);
 
 	return isMounted ? (
-		<div className={styles.wrap} ref={rootRef} data-testid='wrap'>
+		<div className={styles.wrap} ref={rootRef} data-testid='wrap' id={id}>
 			<div className={styles.content}>
 				<button
 					type='button'
