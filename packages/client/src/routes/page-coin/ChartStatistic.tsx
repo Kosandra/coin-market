@@ -1,4 +1,11 @@
-import React, { ChangeEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, {
+	ChangeEvent,
+	useCallback,
+	useEffect,
+	useMemo,
+	useRef,
+	useState,
+} from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-enterprise';
 import 'ag-grid-community/styles/ag-grid.css';
@@ -25,24 +32,27 @@ function formatTime(date: Date | number) {
 			hour: '2-digit',
 			minute: '2-digit',
 		}).format(new Date(date));
-	} catch (e: any) { //cannot specify a data type
+	} catch (e: any) {
+		//cannot specify a data type
 		console.log(e.message);
 	}
 	return '';
 }
 
-type Props ={
-	topping: IModeChartCoin,
-	onChangeMode: (e: ChangeEvent<HTMLInputElement>)=>void
-}
+type Props = {
+	topping: IModeChartCoin;
+	onChangeMode: (e: ChangeEvent<HTMLInputElement>) => void;
+};
 
 const ChartStatistic = (props: Props) => {
-	const {topping, onChangeMode} = props;
+	const { topping, onChangeMode } = props;
 	const gridRef = useRef<AgGridReact>(null);
 	const [coinHistory, setCoinHistory] = useState<IHistoryDataItem[]>([]);
 	// const [topping, setTopping] = useState(modeChartStatisticCoin[0].value);
 	const [rowData, setRowData] = useState<any[]>([]); //cannot specify a data type
-	const coinHistorySelector = useAppSelector(state => state.coinsAll.currentCoinHistory);
+	const coinHistorySelector = useAppSelector(
+		state => state.coinsAll.currentCoinHistory,
+	);
 	const columnDefs: ColDef[] = [
 		{ field: 'time', chartDataType: 'time' },
 		{ field: 'priceUsd' },
@@ -78,7 +88,7 @@ const ChartStatistic = (props: Props) => {
 					},
 					number: {
 						label: {
-							formatter: (params) => {
+							formatter: params => {
 								return '$' + params.value.toLocaleString();
 							},
 						},
@@ -106,7 +116,7 @@ const ChartStatistic = (props: Props) => {
 
 	const onFirstDataRendered = useCallback(() => {
 		const createRangeChartParams: CreateRangeChartParams = {
-			chartContainer: document.querySelector('#myChart') as HTMLElement,
+			chartContainer: document.querySelector('#my-chart') as HTMLElement,
 			suppressChartRanges: true,
 			cellRange: {
 				columns: ['time', 'priceUsd'],
@@ -138,9 +148,10 @@ const ChartStatistic = (props: Props) => {
 
 	const getCountPointsTopping = () => {
 		if (!topping) return 10;
-		const modePoints = modeChartStatisticCoin.find(mode => mode.value === topping.value)?.points;
-		if (modePoints)
-			return modePoints;
+		const modePoints = modeChartStatisticCoin.find(
+			mode => mode.value === topping.value,
+		)?.points;
+		if (modePoints) return modePoints;
 		return 10;
 	};
 
@@ -158,27 +169,24 @@ const ChartStatistic = (props: Props) => {
 
 	return (
 		<div style={containerStyle}>
-
 			<div className={styles.time_period_group}>
-                <span className={styles.param_name}>
-                    Select a time period
-                </span>
+				<span className={styles.param_name}>Select a time period</span>
 
 				<div className={styles.radio_btns}>
-					{modeChartStatisticCoin.map((mode, key) =>
+					{modeChartStatisticCoin.map((mode, key) => (
 						<ModeChartTitle
 							valueInput={mode.value}
 							textLabel={mode.title}
 							checkedInput={topping.value}
 							onChange={onChangeMode}
 							key={key}
-						/>,
-					)}
+						/>
+					))}
 				</div>
 			</div>
 
 			<div className={`${styles.wrapper}`}>
-				{topping && rowData.length > 0 ?
+				{topping && rowData.length > 0 ? (
 					<>
 						<div style={gridStyle}>
 							<AgGridReact
@@ -195,15 +203,16 @@ const ChartStatistic = (props: Props) => {
 							/>
 						</div>
 						<div
-							id='myChart'
+							id='my-chart'
 							className={`ag-theme-alpine ${styles.myChart}`}
+							title={topping.value}
 						/>
 					</>
-					: <div>Loading...</div>
-				}
+				) : (
+					<div>Loading...</div>
+				)}
 			</div>
 		</div>
 	);
 };
-
 export default ChartStatistic;

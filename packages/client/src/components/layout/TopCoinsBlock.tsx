@@ -10,9 +10,9 @@ const TopCoinsBlock = () => {
 	const coinsAll = useAppSelector(state => state.coinsAll.coinsAll);
 
 	return (
-		<div className={styles.top_coins_block}>
+		<div className={styles.top_coins_block} id={'top_coins'}>
 			<div className={styles.top_coins_title}>
-				{`Top ${countCoins} coins: `}
+				Top <span>{countCoins}</span> coins:
 			</div>
 			<div className={styles.top_coins}>
 				{coinsAll?.length > 0 ? (

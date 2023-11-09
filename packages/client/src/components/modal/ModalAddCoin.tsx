@@ -44,7 +44,7 @@ const ModalAddCoin = (props: Props) => {
 	};
 
 	return (
-		<ModalWindow title={getTitle()} onClose={onClose}>
+		<ModalWindow title={getTitle()} onClose={onClose} id={'modal-add-coin'}>
 			<form onSubmit={onSubmit} className={styles.form_add_coin}>
 				<div className={styles.form_group}>
 					<label htmlFor='name' className={styles.input_label}>
@@ -59,6 +59,11 @@ const ModalAddCoin = (props: Props) => {
 						defaultValue={countInputValue}
 						onChange={event => {
 							setCountInputValue(Number(event.target.value));
+						}}
+						onFocus={event => {
+							if (event.target.value == '0') {
+								event.target.value = '';
+							}
 						}}
 					/>
 				</div>

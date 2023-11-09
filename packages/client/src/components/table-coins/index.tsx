@@ -48,11 +48,11 @@ const Index = (props: Props) => {
 		<div className={styles.table_component}>
 			<h2 className={styles.table_title}>Coins</h2>
 			<div className={styles.table}>
-				<div className={styles.table_head}>
+				<div className={styles.table_head} id={'table-head'}>
 					{columnsTableCoins.map(column => (
 						<TableHeaderColumn
 							column={column}
-							sortColumn={column.sorted ? onOptionChange : () => {}}
+							sortColumn={onOptionChange}
 							key={column.value}
 						/>
 					))}
