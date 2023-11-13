@@ -46,7 +46,11 @@ export const percentElement = (percentStr: number) => {
 	let res = '';
 	if (percent > 0) res = `+${percent}`;
 	else res = percent.toString();
-	return <div className={stylesTableCoin[style]}>{res}%</div>;
+	return (
+		<div className={stylesTableCoin[style]}>
+			<span>{res}</span>%
+		</div>
+	);
 };
 
 export const getImagePath = (symbol: string) => {

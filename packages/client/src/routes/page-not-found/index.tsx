@@ -9,7 +9,12 @@ const PageNotFound = () => {
 		<div className={styles.page}>
 			<div className={styles.page_content}>
 				<div className={styles.not_found}>
-					<FixButton text={'Back'} toPage={'/'} />
+					<FixButton
+						text={'Back'}
+						toPage={'/'}
+						idButton={'btn-back'}
+						variant={'primary'}
+					/>
 					Not found page with pathname <span>{navigator.pathname}</span>
 				</div>
 			</div>

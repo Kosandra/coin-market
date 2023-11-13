@@ -71,7 +71,7 @@ const TableRowItem = (props: Props) => {
 					column.value !== 'addToProfile' ? () => toPageCoin(coin) : () => {}
 				}
 			>
-				{renderSwitch(column.value)}
+				<span title={column.value}>{renderSwitch(column.value)}</span>
 			</div>
 			{isModalActive && (
 				<ModalAddCoin

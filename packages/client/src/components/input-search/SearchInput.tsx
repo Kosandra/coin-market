@@ -4,7 +4,7 @@ import { FaMagnifyingGlass } from 'react-icons/fa6';
 import { SearchInputTypes } from 'components/SearchInputTypes';
 
 const SearchInput = (props: SearchInputTypes) => {
-	const { placeholder, onChange } = props;
+	const { placeholder, onChange, value } = props;
 
 	return (
 		<div className={styles.input_seach_block}>
@@ -14,6 +14,7 @@ const SearchInput = (props: SearchInputTypes) => {
 				type={'text'}
 				placeholder={placeholder}
 				onChange={onChange}
+				value={value}
 			/>
 		</div>
 	);

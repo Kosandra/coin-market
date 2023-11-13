@@ -45,7 +45,7 @@ const Index = (props: Props) => {
 	};
 
 	return (
-		<div className={styles.table_component}>
+		<div className={styles.table_component} id={'table'}>
 			<h2 className={styles.table_title}>Coins</h2>
 			<div className={styles.table}>
 				<div className={styles.table_head} id={'table-head'}>

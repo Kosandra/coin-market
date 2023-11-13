@@ -16,11 +16,9 @@ import { ICoin } from 'models/ICoin';
 const PageCoinsTable = () => {
 	const [offsetQuery, setOffsetQuery] = useState(0);
 	const [limitQuery, setLimitQuery] = useState<number>(20);
+	const [message, setMessage] = useState('');
 	const dispatch = useAppDispatch();
 	const [isLoading, setIsLoading] = useState(false);
-	const coinsAllSelector = useAppSelector(
-		state => state.coinsAll.coinsForTable,
-	);
 
 	useEffect(() => {
 		setIsLoading(true);
@@ -37,6 +35,7 @@ const PageCoinsTable = () => {
 			offset: 0,
 		});
 		dispatch(setAllCoins(coinsServer));
+
 		const coinsTableServer: ICoin[] = await client.getCoinsApi.query({
 			limit: limitQuery,
 			offset: offsetQuery,
@@ -70,6 +69,8 @@ const PageCoinsTable = () => {
 		});
 	};
 
+	const handleChangeInput = () => {};
+
 	const [inputSearchValue, setInputSearchValue] = useState('');
 
 	return (
@@ -79,8 +80,11 @@ const PageCoinsTable = () => {
 					<SearchInput
 						placeholder={'Search by name'}
 						onChange={(event: ChangeEvent<HTMLInputElement>) => {
-							setInputSearchValue(event.target.value);
+							const result = event.target.value.replace(/[^a-z.0-9\s-_]/gi, '');
+							setMessage(result);
+							setInputSearchValue(result);
 						}}
+						value={message}
 					/>
 					<div className={styles.btn_scroll_down}>
 						<FixButton

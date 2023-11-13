@@ -30,27 +30,26 @@ type DataHistory = {
 export const appRouter = t.router({
   getCoinsApi: coinLimitProcedure.query<ICoin[]>(async ({ input }) => {
     const request = await axios.get<DataAllCoins>(COINS_API, { params: input });
-    return request?.data.data;
+    return request?.data?.data;
   }),
 
   getCoinByIdApi: coinIdProcedure.query<ICoin>(async ({ input }) => {
-    const request = await axios.get<DataCoinById>(
-      `${COINS_API}/${input.coinId}`,
-    );
-    return request?.data.data;
+    const request = await axios
+      .get<DataCoinById>(`${COINS_API}/${input.coinId}`)
+      .catch((error) => error.message);
+    return request?.data?.data;
   }),
 
   getCoinHistoryApi: coinHistoryProcedure.query<IHistoryDataItem[]>(
     async ({ input }) => {
-      const request = await axios.get<DataHistory>(
-        `${COINS_API}/${input.coinId}/history`,
-        {
+      const request = await axios
+        .get<DataHistory>(`${COINS_API}/${input.coinId}/history`, {
           params: {
             interval: input.interval,
           },
-        },
-      );
-      return request?.data.data;
+        })
+        .catch((error) => error.message);
+      return request?.data?.data;
     },
   ),
 });

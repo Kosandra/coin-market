@@ -9,20 +9,12 @@
   width: 100%;
   gap: 40px;
 
-  .coin_visual {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
+  .coin_name {
+    font-size: 32px;
+  }
 
-    .coin_name {
-      font-size: 32px;
-    }
-
-    img {
-      border-radius: 100%;
-    }
+  img {
+    border-radius: 100%;
   }
 
   .coin_symbol {

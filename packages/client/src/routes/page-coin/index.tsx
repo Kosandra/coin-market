@@ -16,7 +16,11 @@ import {
 } from '../../assets/utils/constants';
 import { IHistoryDataItem } from 'models/IHistoryDataItem';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { setCurrentCoin, setCurrentCoinHistory } from '../../redux/slice/coins';
+import {
+	setAllCoins,
+	setCurrentCoin,
+	setCurrentCoinHistory,
+} from '../../redux/slice/coins';
 import { IModeChartCoin } from 'models/ModeChartCoin';
 import { client } from '../../trpc';
 import FixButton from '../../components/fix-button/FixButton';
@@ -49,6 +53,12 @@ const PageCoin = () => {
 	}, [topping]);
 
 	const getCoinData = async () => {
+		const coinsServer: ICoin[] = await client.getCoinsApi.query({
+			limit: 2000,
+			offset: 0,
+		});
+		dispatch(setAllCoins(coinsServer));
+
 		if (!coinId) return;
 		const coinServer: ICoin = (await client.getCoinByIdApi.query({
 			coinId: coinId,
@@ -82,6 +92,12 @@ const PageCoin = () => {
 		if (mode) setTopping(mode);
 	};
 
+	const correctCoinId = () => {
+		console.log(coinId);
+		// return currentCoin?.id === window.location.pathname;
+		return false;
+	};
+
 	return (
 		<div className={styles.page}>
 			{currentCoin ? (
@@ -91,21 +107,19 @@ const PageCoin = () => {
 							text={'Back'}
 							toPage={'/'}
 							variant={'right_bottom'}
-							idButton={'btn_back'}
+							idButton={'btn-back'}
 						/>
 						{isLoading ? (
 							<TextWriper text={'loading...'} delayValue={30} />
 						) : (
 							<div className={styles.page_content}>
 								<div className={styles.coin_header} id={'coin-header'}>
-									<div className={styles.coin_visual}>
-										<CoinIcon
-											coin={currentCoin!}
-											size={64}
-											fontSize={32}
-											variant={'symbol'}
-										/>
-									</div>
+									<CoinIcon
+										coin={currentCoin!}
+										size={64}
+										fontSize={32}
+										variant={'symbol'}
+									/>
 									<ButtonItem
 										text={'Add to profile'}
 										onClick={handleModalOpen}
@@ -135,7 +149,7 @@ const PageCoin = () => {
 											</p>
 										))}
 									</div>
-									{false ? (
+									{isLoading ? (
 										<TextWriper text={'loading chart...'} delayValue={30} />
 									) : (
 										<div>
