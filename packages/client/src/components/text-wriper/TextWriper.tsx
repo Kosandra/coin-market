@@ -20,7 +20,7 @@ const TextWriper = (props: TextWriperTypes) => {
 	}, [currentIndex, delayValue, text]);
 
 	return (
-		<div className={`${styles.text_wriper}`} style={style} id={'text_wriper'}>
+		<div className={`${styles.text_wriper}`} style={style} id={'text-wriper'}>
 			{currentText}
 		</div>
 	);

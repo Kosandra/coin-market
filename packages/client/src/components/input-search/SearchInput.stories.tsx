@@ -13,6 +13,9 @@ const meta: Meta<typeof SearchInput> = {
 		onChange: {
 			description: 'Change input text event',
 		},
+		value: {
+			description: 'Text of the input field',
+		},
 	},
 	args: {
 		placeholder: 'input something',

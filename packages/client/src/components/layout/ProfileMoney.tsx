@@ -26,7 +26,7 @@ const ProfileMoney = (props: Props) => {
 		<>
 			<div className={styles.cart} onClick={onClick} id={'profile-cart'}>
 				<div className={styles.sum}>
-					{`${profileSumBuy.toLocaleString()} USD `}
+					<span>{`${profileSumBuy.toLocaleString()} USD `}</span>
 					<div>
 						{positivityDigit(differenceSum)}
 						{` (${differencePercent} %)`}

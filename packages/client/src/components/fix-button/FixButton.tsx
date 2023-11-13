@@ -20,8 +20,13 @@ const FixButton = (props: FixButtonArgs) => {
 	};
 
 	return (
-		<div className={getClassNames()} id={idButton}>
-			<Link to={toPage || '#'} className={styles.fix_button} onClick={onClick}>
+		<div className={getClassNames()}>
+			<Link
+				to={toPage || '#'}
+				className={styles.fix_button}
+				onClick={onClick}
+				id={idButton}
+			>
 				{text}
 			</Link>
 		</div>

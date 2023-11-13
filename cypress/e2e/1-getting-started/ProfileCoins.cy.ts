@@ -2,15 +2,17 @@ describe("Profile coins E2E", () => {
   beforeEach(() => {
     cy.viewport(1920, 1080);
     cy.visit("/");
-    cy.get("#table-coins > div").should("have.length.at.least", 20);
   });
 
   it("Two coins must be purchased", () => {
     const countCoinsBuy = "5";
 
-    cy.get(
-      "#table-coins > div:first-child > div:last-child > input[type='button']",
-    ).click();
+    cy.get("#table-coins > div")
+      .should("have.length.at.least", 20)
+      .then(() => {
+        cy.get("#table-coins > div:first-child input[type='button']").click();
+      });
+
     cy.get("#modal-add-coin")
       .should("be.visible")
       .get("form [type='number']")
@@ -19,9 +21,7 @@ describe("Profile coins E2E", () => {
     cy.get("#modal-add-coin [type='submit']").click();
     cy.get("#modal-add-coin").should("not.exist");
 
-    cy.get(
-      "#table-coins > div:nth-child(2) > div:last-child > input[type='button']",
-    ).click();
+    cy.get("#table-coins > div:nth-child(2) input[type='button']").click();
     cy.get("#modal-add-coin")
       .should("be.visible")
       .get("form [type='number']")
@@ -39,9 +39,13 @@ describe("Profile coins E2E", () => {
 
   it("Changing the number of coins when buying and removing them", () => {
     const countCoinsBuy = "5";
-    cy.get(
-      "#table-coins > div:first-child > div:last-child > input[type='button']",
-    ).click();
+
+    cy.get("#table-coins > div")
+      .should("have.length.at.least", 20)
+      .then(() => {
+        cy.get("#table-coins > div:first-child input[type='button']").click();
+      });
+
     cy.get("#modal-add-coin")
       .should("be.visible")
       .get("form [type='number']")
@@ -57,9 +61,7 @@ describe("Profile coins E2E", () => {
       .should("have.length.at.least", 1);
     cy.get("#modal-list-coins [type='button']").click();
 
-    cy.get(
-      "#table-coins > div:first-child > div:last-child > input[type='button']",
-    ).click();
+    cy.get("#table-coins > div:first-child input[type='button']").click();
     cy.get("#modal-add-coin")
       .should("be.visible")
       .get("form [type='number']")
@@ -94,9 +96,7 @@ describe("Profile coins E2E", () => {
 
   it("Removing coins from the profile", () => {
     const countCoinsBuy = "5";
-    cy.get(
-      "#table-coins > div:first-child > div:last-child > input[type='button']",
-    ).click();
+    cy.get("#table-coins > div:first-child input[type='button']").click();
     cy.get("#modal-add-coin")
       .should("be.visible")
       .get("form [type='number']")
