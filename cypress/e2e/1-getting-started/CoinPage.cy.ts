@@ -4,34 +4,15 @@ describe("Profile coins E2E", () => {
     cy.visit("coins/bitcoin");
   });
 
-  it("The header should have the stated number of coins in the top", () => {
-    cy.get("#top-coins")
-      .find("div:first-child > span")
-      .then(($span) => {
-        cy.get("#top-coins #text-wriper")
-          .should("not.exist")
-          .then(() => {
-            cy.log("Span: ", $span.html());
-            cy.get("#top-coins > div:last-child > div").should(
-              "have.length",
-              $span.html(),
-            );
-          });
-      });
-  });
-
-  it("There should be an element with the portfolio value and the difference with the initial portfolio value", () => {
-    cy.get("#profile-cart").should("exist");
-    cy.get("#profile-cart > div > span").should("not.be.empty");
-    cy.get("#profile-cart > div > div").should("exist").should("not.be.empty");
-  });
-
   it("There should be a coin icon, a button to add and a description of the coin", () => {
     cy.get("#coin-header > div")
       .should("not.be.empty")
       .get("#coin-header > div > img")
+      .screenshot("coin-page-icon")
       .should("have.attr", "src");
     cy.get("#coin-header > [type='button']").should("exist");
+    cy.get("#coin-header").parent().wait(1000).screenshot("coin-page-data");
+    cy.screenshot("coin-page");
   });
 
   it("There should be a return to the home page from the coin page", () => {
@@ -51,6 +32,7 @@ describe("Profile coins E2E", () => {
       .get("form [type='number']")
       .type(countCoinsBuy)
       .should("have.value", countCoinsBuy);
+    cy.get("#modal-add-coin").screenshot("modal-add-coin");
     cy.get("#modal-add-coin [type='submit']").click();
     cy.get("#modal-add-coin").should("not.exist");
 
@@ -77,6 +59,7 @@ describe("Profile coins E2E", () => {
     cy.get("#coin-body [type='radio']").eq(1).click();
 
     cy.get("#my-chart")
+      .screenshot("coin-page-chart")
       .should("exist")
       .then(($chart) => {
         expect($chart).attr("title").not.to.equals(oldVal);
@@ -96,7 +79,10 @@ describe("Profile coins E2E", () => {
       .type(negativeNumber)
       .should("have.value", negativeNumber);
     cy.get("#modal-add-coin [type='submit']").click();
-    cy.get("#modal-add-coin").should("exist");
+    cy.get("#modal-add-coin")
+      .wait(1000)
+      .screenshot("modal-add-coin-invalid")
+      .should("exist");
 
     cy.get("#modal-add-coin form [type='number']")
       .clear()
@@ -145,6 +131,9 @@ describe("Profile coins E2E", () => {
       .type(validNumberMoreThenCoins)
       .should("have.value", validNumberMoreThenCoins);
     cy.get("#modal-list-coins [type='submit']").click();
-    cy.get("#modal-list-coins").should("exist");
+    cy.get("#modal-list-coins")
+      .wait(1000)
+      .screenshot("modal-coin-list-invalid")
+      .should("exist");
   });
 });

@@ -23,6 +23,7 @@ describe("Profile coins E2E", () => {
 
     cy.get("#table-coins > div:nth-child(2) input[type='button']").click();
     cy.get("#modal-add-coin")
+      .screenshot("modal-coin-list-coins")
       .should("be.visible")
       .get("form [type='number']")
       .type(countCoinsBuy)
@@ -70,7 +71,7 @@ describe("Profile coins E2E", () => {
     cy.get("#modal-add-coin [type='submit']").click();
     cy.get("#modal-add-coin").should("not.exist");
 
-    cy.get("#profile-cart").click();
+    cy.get("#profile-cart").wait(1000).screenshot("profile-money").click();
     cy.get("#modal-list-coins")
       .should("be.visible")
       .get("li")
@@ -78,7 +79,6 @@ describe("Profile coins E2E", () => {
       .get("form div:first-child > span")
       .invoke("text")
       .should("equal", "(10)");
-
     cy.get("#modal-list-coins form [type='number']")
       .type("5")
       .should("have.value", "5");
@@ -96,6 +96,7 @@ describe("Profile coins E2E", () => {
 
   it("Removing coins from the profile", () => {
     const countCoinsBuy = "5";
+
     cy.get("#table-coins > div:first-child input[type='button']").click();
     cy.get("#modal-add-coin")
       .should("be.visible")

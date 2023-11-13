@@ -4,7 +4,7 @@ describe("Main page functions E2E", () => {
   });
 
   it("Should return to the home page from the wrong path page", () => {
-    cy.visit("/abc");
+    cy.visit("/abc").wait(1000).screenshot("not-found-page");
     cy.get("#btn-back")
       .click()
       .then(() => {
@@ -15,7 +15,9 @@ describe("Main page functions E2E", () => {
   });
 
   it("Should go back to the main page from the page with the wrong coin id", () => {
-    cy.visit("/coins/abc");
+    cy.visit("/coins/abc")
+      .wait(1000)
+      .screenshot("not-found-page-invalid-coinID");
     cy.get("#btn-back")
       .click()
       .then(() => {
